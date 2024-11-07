@@ -38,8 +38,6 @@ Here's how you can write that section as a part of your GitHub README:
 
 - `0x5Af6300197D9fd6ADCE0F544f4B087bf899bebC0`
 
----
-
 ### Test Results:
 
 - **Create pair deploys a pair contract:**
@@ -64,6 +62,20 @@ Here's how you can write that section as a part of your GitHub README:
 - All tests were executed successfully.
 - The contract has been deployed successfully, and pair creation functionality was verified.
 - Edge cases such as using the same asset and collateral address or zero addresses were handled properly, with the expected reverts occurring.
+
+### CONTRACT VERIFICATION
+
+npx hardhat verify --network CitreaTestnet 0x41180575cDc0a4B13f77e13527984CDCE2100ED5 --contract contracts/test/TestToken.sol:TestToken "OUSDC" "OUSDC" "54463316145516758329000000000000000000000000000000000000000"
+
+npx hardhat verify --network CitreaTestnet 0x74f8149d1395F462995bf250eeC4a2B03f021774 --contract contracts/test/TestToken.sol:TestToken "CBTC" "CBTC" "54463316145516758329000000000000000000000000000000000000000"
+
+npx hardhat verify --network CitreaTestnet 0x5Af6300197D9fd6ADCE0F544f4B087bf899bebC0 --contract contracts/TimeswapPair.sol:TimeswapPair "0x41180575cDc0a4B13f77e13527984CDCE2100ED5" "0x74f8149d1395F462995bf250eeC4a2B03f021774" 0 0
+
+npx hardhat verify --network CitreaTestnet 0xAc351584FCa597360CCb7984B29873A042361217 --contract contracts/TimeswapFactory.sol:TimeswapFactory 0x5F3d16A35Da619dFA0d607563eb1D14b75Fa25c5 0x2f94c770761928E4E0d364AC3c888621F75E5E99
+
+## DEPLOY CONTRACT
+
+npx hardhat test test/pair/1PairDeployment.test.ts --network CitreaTestnet
 
 ## Contract Address
 

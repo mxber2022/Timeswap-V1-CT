@@ -37,6 +37,8 @@ describe('Deploying Pair Contract', () => {
       undefined,
       timeSwapMathContractAddresss
     )) as unknown as IFactory
+
+    console.log('Factory Contract Address:', factory.address)
   })
 
   beforeEach(async () => {

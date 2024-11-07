@@ -54,7 +54,7 @@ export default {
   sourcify: {
     // Disabled by default
     // Doesn't need an API key
-    enabled: true,
+    enabled: false,
   },
   typechain: {
     outDir: 'typechain',
