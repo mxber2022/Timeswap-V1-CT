@@ -71,7 +71,7 @@ npx hardhat verify --network CitreaTestnet 0x74f8149d1395F462995bf250eeC4a2B03f0
 
 npx hardhat verify --network CitreaTestnet 0x5Af6300197D9fd6ADCE0F544f4B087bf899bebC0 --contract contracts/TimeswapPair.sol:TimeswapPair "0x41180575cDc0a4B13f77e13527984CDCE2100ED5" "0x74f8149d1395F462995bf250eeC4a2B03f021774" 0 0
 
-npx hardhat verify --network CitreaTestnet 0xAc351584FCa597360CCb7984B29873A042361217 --contract contracts/TimeswapFactory.sol:TimeswapFactory 0x5F3d16A35Da619dFA0d607563eb1D14b75Fa25c5 0x2f94c770761928E4E0d364AC3c888621F75E5E99
+npx hardhat verify --network CitreaTestnet 0xAc351584FCa597360CCb7984B29873A042361217 --contract contracts/TimeswapFactory.sol:TimeswapFactory "0x5F3d16A35Da619dFA0d607563eb1D14b75Fa25c5" "0x2f94c770761928E4E0d364AC3c888621F75E5E99"
 
 ## DEPLOY CONTRACT
 
