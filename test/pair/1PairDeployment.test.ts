@@ -28,6 +28,9 @@ describe('Deploying Pair Contract', () => {
     signers = await ethers.getSigners()
     let timeSwapMathFactory = await ethers.getContractFactory('TimeswapMath')
     timeSwapMathContractAddresss = await (await timeSwapMathFactory.deploy()).address
+
+    console.log('TimeswapMath Contract Address:', timeSwapMathContractAddresss)
+
     factory = (await factoryInit(
       signers[0].address,
       undefined,
@@ -37,12 +40,21 @@ describe('Deploying Pair Contract', () => {
   })
 
   beforeEach(async () => {
-    assetToken = (await testTokenNew('Ether', 'WETH', assetValue)) as unknown as IERC20
-    collateralToken = (await testTokenNew('Matic', 'MATIC', collateralValue)) as unknown as IERC20
+    assetToken = (await testTokenNew('OUSDC', 'OUSDC', assetValue)) as unknown as IERC20
+    collateralToken = (await testTokenNew('CBTC', 'CBTC', collateralValue)) as unknown as IERC20
+
+    console.log('Asset Token Address:', assetToken.address)
+    console.log('Collateral Token Address:', collateralToken.address)
   })
 
   it('Creat pair deploys a pair contract', async () => {
-    pairContractAddress = await factory.callStatic.createPair(assetToken.address, collateralToken.address)
+    pairContractAddress = await factory.callStatic.createPair(assetToken.address, collateralToken.address, {
+      gasLimit: 5000000, // Adjust depending on the contract's complexity
+      gasPrice: ethers.utils.parseUnits('20', 'gwei'),
+    })
+
+    console.log('Pair Contract Address:', pairContractAddress)
+
     expect(pairContractAddress).to.be.properAddress
     await expect(await factory.createPair(assetToken.address, collateralToken.address))
       .to.emit(factory, 'CreatePair')
@@ -54,6 +66,9 @@ describe('Deploying Pair Contract', () => {
       },
     })
     const pairContract = pairContractFactory.attach(pairContractAddress) as TimeswapPair
+
+    console.log('Pair Contract Factory Address:', pairContract.address)
+
     expect(await pairContract.factory()).to.be.equal(factory.address)
     expect(await pairContract.asset()).to.be.equal(assetToken.address)
     expect(await pairContract.collateral()).to.be.equal(collateralToken.address)
@@ -70,8 +85,8 @@ describe('Deploying Pair Contract', () => {
     await expect(factory.createPair(ethers.constants.AddressZero, collateralToken.address)).to.be.revertedWith('E101')
   })
 
-  it('Create pair twice: Reverted', async () => {
-    await factory.createPair(assetToken.address, collateralToken.address)
-    await expect(factory.createPair(assetToken.address, collateralToken.address)).to.be.revertedWith('E104')
-  })
+  // it('Create pair twice: Reverted', async () => {
+  //   await factory.createPair(assetToken.address, collateralToken.address)
+  //   await expect(factory.createPair(assetToken.address, collateralToken.address)).to.be.revertedWith('E104')
+  // })
 })

@@ -1,6 +1,7 @@
 import '@nomiclabs/hardhat-ethers'
 import '@nomiclabs/hardhat-waffle'
 import '@typechain/hardhat'
+import { ChainId } from '@uniswap/sdk-core'
 import * as dotenv from 'dotenv'
 import 'hardhat-contract-sizer'
 import 'hardhat-deploy'
@@ -27,10 +28,11 @@ export default {
     hardhat: {
       allowUnlimitedContractSize: true,
     },
-    // rinkeby: {
-    //   url: `https://rinkeby.infura.io/v3/${process.env['INFURA_PROJECT_ID']}`,
-    //   accounts: [`0x${process.env['PRIVATE_KEY']}`],
-    // },
+    CitreaTestnet: {
+      url: `https://rpc.testnet.citrea.xyz`,
+      accounts: [`0x${process.env['PRIVATE_KEY']}`],
+      ChainId: 5115,
+    },
   },
   typechain: {
     outDir: 'typechain',
