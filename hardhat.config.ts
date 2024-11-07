@@ -6,6 +6,7 @@ import * as dotenv from 'dotenv'
 import 'hardhat-contract-sizer'
 import 'hardhat-deploy'
 import 'solidity-coverage'
+require('@nomicfoundation/hardhat-verify')
 
 dotenv.config()
 
@@ -33,6 +34,27 @@ export default {
       accounts: [`0x${process.env['PRIVATE_KEY']}`],
       ChainId: 5115,
     },
+  },
+
+  etherscan: {
+    apiKey: {
+      CitreaTestnet: 'GVSHJAGVSCAJHCVJCVJQCVQW',
+    },
+    customChains: [
+      {
+        network: 'CitreaTestnet',
+        chainId: 5115,
+        urls: {
+          apiURL: 'https://explorer.testnet.citrea.xyz/api',
+          browserURL: 'https://explorer.testnet.citrea.xyz',
+        },
+      },
+    ],
+  },
+  sourcify: {
+    // Disabled by default
+    // Doesn't need an API key
+    enabled: true,
   },
   typechain: {
     outDir: 'typechain',

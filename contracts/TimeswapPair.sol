@@ -108,7 +108,7 @@ contract TimeswapPair is IPair, ReentrancyGuard {
     /// @param _asset The address of the ERC20 being lent and borrowed.
     /// @param _collateral The address of the ERC20 as the collateral.
     /// @param _fee The chosen fee rate.
-    /// @param _protocolFee The chosen protocol fee rate.
+    /// @param _protocolFee The chosen protocol fee rate. 
     constructor(
         IERC20 _asset,
         IERC20 _collateral,
