@@ -16,6 +16,55 @@ The following assumes the use of `node@>=14`.
 
 `yarn test`
 
+Here's how you can write that section as a part of your GitHub README:
+
+---
+
+## Deploying Pair Contract
+
+### TimeswapMath Contract Address
+
+- `0x2f94c770761928E4E0d364AC3c888621F75E5E99`
+
+### Asset Token Address
+
+- `0x09a78367B3725Cae7A0fe576B5fCeB9D467E4552`
+
+### Collateral Token Address
+
+- `0xC66e1854F53CF3fb86430CEc5fbe082392AE2cdF`
+
+### Pair Contract Address
+
+- `0x5Af6300197D9fd6ADCE0F544f4B087bf899bebC0`
+
+---
+
+### Test Results:
+
+- **Create pair deploys a pair contract:**
+
+  - **Status:** ✅ Passed
+  - **Time Taken:** 6038ms
+  - **Pair Contract Factory Address:** `0x5Af6300197D9fd6ADCE0F544f4B087bf899bebC0`
+
+- **Create pair with same collateral and asset address:**
+
+  - **Status:** ✅ Reverted (as expected)
+  - **Time Taken:** 108ms
+
+- **Create pair with same collateral or asset as zero address:**
+  - **Status:** ✅ Reverted (as expected)
+  - **Time Taken:** 202ms
+
+---
+
+### Summary:
+
+- All tests were executed successfully.
+- The contract has been deployed successfully, and pair creation functionality was verified.
+- Edge cases such as using the same asset and collateral address or zero addresses were handled properly, with the expected reverts occurring.
+
 ## Contract Address
 
 Deploying Pair Contract
