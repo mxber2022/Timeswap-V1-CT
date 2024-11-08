@@ -6,10 +6,11 @@ const coinPairsData = [
     pair: 'OUSD / CBTC',
     description: '✨ Boosted',
     platform: 'Polytrade',
-    tvl: '$34,871',
-    apr: '141.20%',
-    collateral: 'TRADE',
+    tvl: '$0',
+    apr: '24%',
+    collateral: '120%',
     maturity: '26 Dec 2024',
+    tp: '0.009 CBTC/OUSD',
   },
 ]
 
@@ -42,8 +43,6 @@ const Market = () => {
                 </svg>
                 <p className="text-sm">{asset}</p>
               </div>
-             
-            
             </div>
             <div className="max-w-md rounded-xl border bg-transparent p-6 pb-10 text-white">
               <p className="text-lg font-medium">Collateral Address</p>
@@ -64,9 +63,6 @@ const Market = () => {
                 </svg>
                 <p className="text-sm">{collateral}</p>
               </div>
-              
-             
-            
             </div>
             <div className="max-w-md rounded-xl border bg-transparent p-6 pb-10 text-white">
               <p className="text-lg font-medium">Fee</p>
@@ -87,9 +83,6 @@ const Market = () => {
                 </svg>
                 <p className="text-sm">{+fee?.toString()} Wei</p>
               </div>
-              
-             
-            
             </div>
             <div className="max-w-md rounded-xl border bg-transparent p-6 pb-10 text-white">
               <p className="text-lg font-medium"> Protocol Fee</p>
@@ -110,9 +103,6 @@ const Market = () => {
                 </svg>
                 <p className="text-sm">{+protocolFee?.toString()} Wei</p>
               </div>
-              
-             
-            
             </div>
           </div>
 
@@ -127,6 +117,7 @@ const Market = () => {
                   </td>
 
                   <td className="whitespace-normal py-4 text-sm font-medium text-white sm:px-6">TVL</td>
+                  <td className="whitespace-normal py-4 text-sm font-medium text-white sm:px-6">TP</td>
                   <td className="whitespace-normal py-4 text-sm font-medium text-white sm:px-6">APR</td>
                   <td className="whitespace-normal py-4 text-sm font-medium text-white sm:px-6">CDP</td>
                   <td className="whitespace-normal py-4 text-sm font-medium text-white sm:px-6">MATURITY</td>
@@ -153,6 +144,11 @@ const Market = () => {
                       </td>
 
                       <td className="whitespace-no-wrap py-4 px-6 text-right text-sm text-white lg:text-left">
+                        {coinPair.tp}
+                      </td>
+
+
+                      <td className="whitespace-no-wrap py-4 px-6 text-right text-sm text-white lg:text-left">
                         {coinPair.apr}
                       </td>
                       <td className="whitespace-no-wrap py-4 px-6 text-right text-sm text-white lg:text-left">
@@ -166,6 +162,31 @@ const Market = () => {
                 })}
               </tbody>
             </table>
+            <div className="flex flex-row-reverse">
+              <button
+                
+                className="m-2 inline-flex items-center justify-center rounded-xl border border-transparent bg-blue-600 px-5 py-3 font-medium text-white hover:bg-blue-700"
+              >
+               Lend
+              </button>
+              <button
+                className="m-2 inline-flex items-center justify-center rounded-xl border bg-white px-5 py-3 font-medium text-blue-600 shadow hover:bg-blue-50"
+              >
+                Borrow
+              </button>
+              <button
+                
+                className="m-2 inline-flex items-center justify-center rounded-xl border bg-white px-5 py-3 font-medium text-blue-600 shadow hover:bg-blue-50"
+              >
+                Mint
+              </button>
+              <button
+                
+                className="m-2 inline-flex items-center justify-center rounded-xl border bg-white px-5 py-3 font-medium text-blue-600 shadow hover:bg-blue-50"
+              >
+                Burn
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -38,7 +38,7 @@ const Header = () => {
       {title}
     </LinkScroll>
   );
-
+  // https://rpc.ankr.com/xdc_testnet
   const NavLinkPage = ({ title, href }) => {
     return (
       <Link
