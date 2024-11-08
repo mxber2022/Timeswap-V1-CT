@@ -1,7 +1,9 @@
+'use client'
 import React from 'react'
+import { useDataContext } from '@/context/DataContext'
 const coinPairsData = [
   {
-    pair: 'USDT / TRADE',
+    pair: 'OUSD / CBTC',
     description: '✨ Boosted',
     platform: 'Polytrade',
     tvl: '$34,871',
@@ -9,63 +11,108 @@ const coinPairsData = [
     collateral: 'TRADE',
     maturity: '26 Dec 2024',
   },
-  {
-    pair: 'ETH / USDC',
-    description: 'Stable Pair',
-    platform: 'Compound',
-    tvl: '$500,000',
-    apr: '5.43%',
-    collateral: 'USDC',
-    maturity: '15 Jan 2025',
-  },
-  {
-    pair: 'DAI / WBTC',
-    description: 'High Yield',
-    platform: 'Aave',
-    tvl: '$1,200,000',
-    apr: '12.80%',
-    collateral: 'WBTC',
-    maturity: '10 Nov 2024',
-  },
-  {
-    pair: 'BNB / BUSD',
-    description: '✨ Boosted',
-    platform: 'PancakeSwap',
-    tvl: '$750,000',
-    apr: '9.50%',
-    collateral: 'BUSD',
-    maturity: '30 Dec 2024',
-  },
-  {
-    pair: 'SOL / USDT',
-    description: 'High Liquidity',
-    platform: 'Solend',
-    tvl: '$320,000',
-    apr: '18.70%',
-    collateral: 'SOL',
-    maturity: '1 Feb 2025',
-  },
-  {
-    pair: 'AVAX / ETH',
-    description: 'Long Term',
-    platform: 'Trader Joe',
-    tvl: '$210,000',
-    apr: '7.20%',
-    collateral: 'ETH',
-    maturity: '20 Mar 2025',
-  },
 ]
 
 const Market = () => {
+  const { asset, collateral, fee, protocolFee } = useDataContext()
   return (
     <>
       <div className="w-screen mt-20 p-20 font-[family-name:var(--font-geist-sans)]">
         <div className="mx-auto mt-8 max-w-screen-lg px-2">
           <div className="sm:flex sm:items-center sm:justify-between flex-col sm:flex-row">
             <p className="flex-1 text-xl  font-bold text-white font-[family-name:var(--font-geist-sans)]">Markets</p>
-
-            <div className="mt-4 sm:mt-0">
-              <div className="flex items-center justify-start sm:justify-end"></div>
+          </div>
+          <div className="grid grid-cols-1 gap-2 gap-y-4 mt-10 bg-transparent sm:grid-cols-2 sm:p-10 lg:grid-cols-2">
+            <div className="max-w-md rounded-xl border bg-transparent p-6 pb-10 text-white">
+              <p className="text-lg font-medium">Asset Address</p>
+              <div className="mt-4 flex items-center rounded-lg bg-transparent py-1 px-2 text-white">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="mr-2 h-6 w-6 shrink-0 text-indigo-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <p className="text-sm">{asset}</p>
+              </div>
+             
+            
+            </div>
+            <div className="max-w-md rounded-xl border bg-transparent p-6 pb-10 text-white">
+              <p className="text-lg font-medium">Collateral Address</p>
+              <div className="mt-4 flex items-center rounded-lg bg-transparent py-1 px-2 text-white">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="mr-2 h-6 w-6 shrink-0 text-indigo-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <p className="text-sm">{collateral}</p>
+              </div>
+              
+             
+            
+            </div>
+            <div className="max-w-md rounded-xl border bg-transparent p-6 pb-10 text-white">
+              <p className="text-lg font-medium">Fee</p>
+              <div className="mt-4 flex items-center rounded-lg bg-transparent py-1 px-2 text-white">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="mr-2 h-6 w-6 shrink-0 text-indigo-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <p className="text-sm">{+fee?.toString()} Wei</p>
+              </div>
+              
+             
+            
+            </div>
+            <div className="max-w-md rounded-xl border bg-transparent p-6 pb-10 text-white">
+              <p className="text-lg font-medium"> Protocol Fee</p>
+              <div className="mt-4 flex items-center rounded-lg bg-transparent py-1 px-2 text-white">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="mr-2 h-6 w-6 shrink-0 text-indigo-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <p className="text-sm">{+protocolFee?.toString()} Wei</p>
+              </div>
+              
+             
+            
             </div>
           </div>
 
@@ -98,27 +145,22 @@ const Market = () => {
                       </td>
 
                       <td className="whitespace-no-wrap hidden py-4 text-sm font-normal  text-red sm:px-6 lg:table-cell">
-                      {coinPair.pair}
+                        {coinPair.pair}
                       </td>
 
                       <td className="whitespace-no-wrap py-4 px-6 text-right text-sm text-white lg:text-left">
                         {coinPair.tvl}
-                        
                       </td>
 
                       <td className="whitespace-no-wrap py-4 px-6 text-right text-sm text-white lg:text-left">
                         {coinPair.apr}
-                        
                       </td>
                       <td className="whitespace-no-wrap py-4 px-6 text-right text-sm text-white lg:text-left">
                         {coinPair.collateral}
-                        
                       </td>
                       <td className="whitespace-no-wrap py-4 px-6 text-right text-sm text-white lg:text-left">
                         {coinPair.maturity}
                       </td>
-
-
                     </tr>
                   )
                 })}

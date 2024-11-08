@@ -63,7 +63,13 @@ const Header = () => {
         <div className="flex items-center space-x-8">
           <div className="nav-logo">
             <Link href="/">
-              <h1 className="font-bold text-1xl text-red font-[family-name:var(--font-geist-mono)] uppercase">Timeswap - Citrea</h1>
+            <Image
+            src={`/images/citrea.png`}
+            alt="magic"
+            className="object-contain w-auto"
+            height={200}
+            width={200}
+          />
             </Link>
           </div>
 
