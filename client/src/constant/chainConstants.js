@@ -1,4 +1,4 @@
-import { baseSepolia } from '@wagmi/core/chains'
+import {  arbitrumSepolia } from '@wagmi/core/chains'
 import { http } from 'viem'
 
 export const citreaChain = {
@@ -12,9 +12,8 @@ export const citreaChain = {
     default: { name: 'Testnet', url: 'https://explorer.testnet.citrea.xyz/' },
   },
 }
-export const chainArray = [baseSepolia, citreaChain]
+export const chainArray = [ citreaChain]
 
 export const transportsObject = {
-  [baseSepolia.id]: http(),
   [citreaChain.id]: http(),
 }

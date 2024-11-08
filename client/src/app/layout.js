@@ -1,5 +1,4 @@
-
-"use client";
+'use client'
 
 import localFont from 'next/font/local'
 import './globals.css'
@@ -10,8 +9,8 @@ import { ChainProvider } from '@/context/ChainContext'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { WagmiProvider } from 'wagmi'
 import Header from '@/components/Header'
-
-const queryClient = new QueryClient();
+import DataContextProvider from '@/context/DataContext'
+const queryClient = new QueryClient()
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
   variable: '--font-geist-sans',
@@ -35,7 +34,10 @@ const AppProviders = ({ children }) => (
           overlayBlur: 'small',
         })}
       >
-        <ChainProvider>{children}</ChainProvider>
+        <ChainProvider>
+          {' '}
+          <DataContextProvider>{children}</DataContextProvider>
+        </ChainProvider>
       </RainbowKitProvider>
     </QueryClientProvider>
   </WagmiProvider>
