@@ -1,6 +1,7 @@
 'use client'
 import React from 'react'
 import { useDataContext } from '@/context/DataContext'
+import DeployPair from '../../../DeployPair/DeployPair'
 const coinPairsData = [
   {
     pair: 'OUSD / CBTC',
@@ -186,7 +187,10 @@ const Market = () => {
               >
                 Burn
               </button>
+            
             </div>
+
+            <DeployPair/>
           </div>
         </div>
       </div>

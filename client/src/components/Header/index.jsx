@@ -88,7 +88,7 @@ const Header = () => {
                     <NavLinkPage title="Borrowing" href="/active-pool" />
                   </li>
                   <li className="nav-li">
-                    <NavLinkPage title="Swap" href="/dashboard" />
+                    <NavLinkPage title="Market" href="/market" />
                   </li>
                
                 </>
@@ -141,7 +141,7 @@ const Header = () => {
                     <NavLinkPage title="Home" href="/" />
                   </li>
                   <li className="nav-li">
-                    <NavLinkPage title="Swap" href="/dashboard" />
+                    <NavLinkPage title="Market" href="/market" />
                   </li>
                   <li className="nav-li">
                     <NavLinkPage title="Lending" href="/explore" />
